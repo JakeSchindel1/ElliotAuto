@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.985 0.004 95);
+  --foreground: oklch(0.3 0.02 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.3 0.02 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.3 0.02 258);
+  --primary: oklch(0.64 0.2 35);
+  --primary-foreground: oklch(0.99 0.003 95);
+  --secondary: oklch(0.95 0.008 250);
+  --secondary-foreground: oklch(0.34 0.018 258);
+  --muted: oklch(0.97 0.005 240);
+  --muted-foreground: oklch(0.54 0.015 258);
+  --accent: oklch(0.74 0.13 230);
+  --accent-foreground: oklch(0.22 0.03 255);
+  --destructive: oklch(0.59 0.23 28);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.89 0.01 250);
+  --input: oklch(0.99 0.003 95);
+  --ring: oklch(0.64 0.2 35);
+  --chart-1: oklch(0.64 0.2 35);
+  --chart-2: oklch(0.74 0.13 230);
+  --chart-3: oklch(0.68 0.12 150);
+  --chart-4: oklch(0.71 0.16 70);
+  --chart-5: oklch(0.62 0.05 256);
+  --radius: 1rem;
+  --sidebar: oklch(0.99 0.003 95);
+  --sidebar-foreground: oklch(0.3 0.02 258);
+  --sidebar-primary: oklch(0.64 0.2 35);
+  --sidebar-primary-foreground: oklch(0.99 0.003 95);
+  --sidebar-accent: oklch(0.95 0.008 250);
+  --sidebar-accent-foreground: oklch(0.34 0.018 258);
+  --sidebar-border: oklch(0.89 0.01 250);
+  --sidebar-ring: oklch(0.64 0.2 35);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans), 'Sora', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-serif: var(--font-serif), 'Rajdhani', 'Barlow Condensed', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 45%),
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 40%),
+      linear-gradient(170deg, oklch(0.99 0.004 98) 0%, oklch(0.98 0.005 252) 55%, oklch(0.975 0.006 95) 100%);
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-serif text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-primary;
+  }
+
+  .surface-card {
+    @apply rounded-3xl border border-border bg-card/90 shadow-[0_28px_65px_-44px_rgba(28,36,54,0.45)];
+  }
+}
+
+@layer utilities {
+  @keyframes rise-in {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-rise {
+    animation: rise-in 700ms cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  }
+
+  .animate-rise-delay-1 {
+    animation-delay: 140ms;
+  }
+
+  .animate-rise-delay-2 {
+    animation-delay: 280ms;
+  }
+}
