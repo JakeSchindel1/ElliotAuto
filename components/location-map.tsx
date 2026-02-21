@@ -1,4 +1,5 @@
-import { Clock, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react"
+import Image from "next/image"
+import { Apple, Clock, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react"
 
 const address = "4101 Glenside Dr, Richmond, VA 23228"
 const mapsQuery = "4101+Glenside+Dr+Richmond+VA+23228"
@@ -140,11 +141,14 @@ export function LocationMap() {
             </div>
 
             <div className="grid gap-3 border-t border-border bg-background/80 p-5 sm:grid-cols-3">
+              <p className="text-center text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:col-span-3">
+                Choose Your Maps App
+              </p>
               <a
                 href={googleDirectionsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-background transition-colors hover:bg-foreground/90"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#1a73e8]/25 bg-[#1a73e8]/10 px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#1a73e8] transition-colors hover:bg-[#1a73e8]/15"
               >
                 <Navigation className="h-3.5 w-3.5" />
                 Google Maps
@@ -153,18 +157,24 @@ export function LocationMap() {
                 href={appleDirectionsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/15 bg-background px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-black px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black/90"
               >
-                <MapPin className="h-3.5 w-3.5" />
+                <Apple className="h-3.5 w-3.5" />
                 Apple Maps
               </a>
               <a
                 href={wazeDirectionsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/15 bg-background px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#32CCFE] bg-[#32CCFE] px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#022531] transition-colors hover:bg-[#24b8e8]"
               >
-                <Navigation className="h-3.5 w-3.5" />
+                <Image
+                  src="/waze-icon.svg"
+                  alt="Waze"
+                  width={14}
+                  height={14}
+                  className="h-3.5 w-3.5"
+                />
                 Waze
               </a>
             </div>
