@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import {
   Battery,
@@ -93,6 +96,8 @@ const services = [
 ]
 
 export function Services() {
+  const [showAllMobile, setShowAllMobile] = useState(false)
+
   return (
     <section id="services" className="bg-white/40 py-24 lg:py-32">
       <div className="section-shell">
@@ -109,26 +114,38 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="surface-card group flex flex-col p-6 transition-transform duration-300 hover:-translate-y-1"
+              className={`surface-card group ${
+                index >= 8 && !showAllMobile ? "hidden md:flex" : "flex"
+              } flex-col p-4 transition-transform duration-300 hover:-translate-y-1 sm:p-6`}
             >
-              <div className="mb-5 flex items-center justify-between">
+              <div className="mb-3 flex items-center justify-between sm:mb-5">
                 <service.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
                 <span className="rounded-full bg-secondary px-2.5 py-1 font-serif text-[0.65rem] font-bold text-muted-foreground">
                   {(index + 1).toString().padStart(2, "0")}
                 </span>
               </div>
-              <h3 className="mb-2 font-serif text-lg font-bold tracking-tight text-foreground">
+              <h3 className="mb-1 font-serif text-sm font-bold leading-snug tracking-tight text-foreground sm:mb-2 sm:text-lg">
                 {service.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="hidden text-sm leading-relaxed text-muted-foreground sm:block">
                 {service.description}
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-4 md:hidden">
+          <button
+            type="button"
+            onClick={() => setShowAllMobile((prev) => !prev)}
+            className="w-full rounded-xl border border-border bg-background/80 px-4 py-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
+          >
+            {showAllMobile ? "Show Fewer Services" : "Show All Services"}
+          </button>
         </div>
 
         <div className="surface-card mt-16 overflow-hidden">
@@ -156,20 +173,20 @@ export function Services() {
                 your car back on the road better than ever.
               </p>
 
-              <div className="mt-7 grid grid-cols-3 gap-3">
+              <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Richmond Years", value: "40+" },
-                  { label: "Combined Experience", value: "75+" },
-                  { label: "Team Standard", value: "ASE" },
+                  { label: "Serving Richmond", value: "40+ Years" },
+                  { label: "Combined Experience", value: "75+ Years" },
+                  { label: "Certified Team", value: "ASE" },
                 ].map((metric) => (
                   <div
                     key={metric.label}
                     className="rounded-2xl border border-border bg-background/80 px-3 py-4 text-center"
                   >
-                    <p className="font-serif text-xl font-bold text-foreground">
+                    <p className="font-serif text-xl font-bold leading-tight text-foreground">
                       {metric.value}
                     </p>
-                    <p className="mt-1 text-[0.62rem] uppercase tracking-[0.15em] text-muted-foreground">
+                    <p className="mt-1 text-[0.7rem] leading-tight text-muted-foreground">
                       {metric.label}
                     </p>
                   </div>

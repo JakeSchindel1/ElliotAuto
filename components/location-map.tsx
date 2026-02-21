@@ -2,7 +2,8 @@ import { Clock, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-rea
 
 const address = "4101 Glenside Dr, Richmond, VA 23228"
 const mapsQuery = "4101+Glenside+Dr+Richmond+VA+23228"
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`
+const googleDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`
+const appleDirectionsUrl = `https://maps.apple.com/?daddr=${mapsQuery}&dirflg=d`
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
 
 export function LocationMap() {
@@ -139,22 +140,22 @@ export function LocationMap() {
 
             <div className="grid gap-3 border-t border-border bg-background/80 p-5 sm:grid-cols-2">
               <a
-                href={directionsUrl}
+                href={googleDirectionsUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-background transition-colors hover:bg-foreground/90"
               >
                 <Navigation className="h-3.5 w-3.5" />
-                Get Directions
+                Google Maps
               </a>
               <a
-                href={mapsUrl}
+                href={appleDirectionsUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/15 bg-background px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
               >
                 <MapPin className="h-3.5 w-3.5" />
-                View In Google Maps
+                Apple Maps
               </a>
             </div>
           </div>
