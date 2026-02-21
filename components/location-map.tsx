@@ -4,6 +4,7 @@ const address = "4101 Glenside Dr, Richmond, VA 23228"
 const mapsQuery = "4101+Glenside+Dr+Richmond+VA+23228"
 const googleDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`
 const appleDirectionsUrl = `https://maps.apple.com/?daddr=${mapsQuery}&dirflg=d`
+const wazeDirectionsUrl = `https://www.waze.com/ul?q=${mapsQuery}&navigate=yes`
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
 
 export function LocationMap() {
@@ -138,7 +139,7 @@ export function LocationMap() {
               />
             </div>
 
-            <div className="grid gap-3 border-t border-border bg-background/80 p-5 sm:grid-cols-2">
+            <div className="grid gap-3 border-t border-border bg-background/80 p-5 sm:grid-cols-3">
               <a
                 href={googleDirectionsUrl}
                 target="_blank"
@@ -156,6 +157,15 @@ export function LocationMap() {
               >
                 <MapPin className="h-3.5 w-3.5" />
                 Apple Maps
+              </a>
+              <a
+                href={wazeDirectionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-foreground/15 bg-background px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
+              >
+                <Navigation className="h-3.5 w-3.5" />
+                Waze
               </a>
             </div>
           </div>
