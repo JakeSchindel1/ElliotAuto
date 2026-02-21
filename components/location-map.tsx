@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Apple, Clock, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react"
+import { Clock, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react"
 
 const address = "4101 Glenside Dr, Richmond, VA 23228"
 const mapsQuery = "4101+Glenside+Dr+Richmond+VA+23228"
@@ -150,7 +150,13 @@ export function LocationMap() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#1a73e8]/25 bg-[#1a73e8]/10 px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#1a73e8] transition-colors hover:bg-[#1a73e8]/15"
               >
-                <Navigation className="h-3.5 w-3.5" />
+                <Image
+                  src="/Google_Maps_icon.svg"
+                  alt="Google Maps"
+                  width={14}
+                  height={14}
+                  className="h-3.5 w-3.5"
+                />
                 Google Maps
               </a>
               <a
@@ -159,7 +165,13 @@ export function LocationMap() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-black px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black/90"
               >
-                <Apple className="h-3.5 w-3.5" />
+                <Image
+                  src="/Apple_logo_white.svg"
+                  alt="Apple Maps"
+                  width={14}
+                  height={14}
+                  className="h-3.5 w-3.5"
+                />
                 Apple Maps
               </a>
               <a
